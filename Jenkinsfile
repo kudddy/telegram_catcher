@@ -1,12 +1,17 @@
+cat <<-'JENKINSFILE' > Jenkinsfile
 pipeline {
-    agent {
-        docker { image 'node:14-alpine' }
+  agent { docker { image 'python:3.7.2' } }
+  stages {
+    stage('build') {
+      steps {
+        sh 'pip install -r requirements.txt'
+      }
     }
-    stages {
-        stage('Test') {
-            steps {
-                sh 'node --version'
-            }
-        }
+    stage('test') {
+      steps {
+        sh 'python test.py'
+      }   
     }
+  }
 }
+JENKINSFILE
