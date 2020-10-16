@@ -23,11 +23,13 @@ pipeline {
 
                 script {
                     echo 'logging in docker'
-                    sh "docker login -u username -p pass"
-                    echo 'build image'
-                    def customImage = docker.build("kudddy/catcher")
-                    echo 'push image'
-                    customImage.push()
+                    withCredentials([
+                        usernamePassword(credentialsId: dockercreds, usernameVariable: 'USER', passwordVariable: 'PASS')
+                    ]){
+
+                    sh "docker login -u ${USER} -p ${PASS}"
+                    }
+                    echo 'OK'
                 }
             }
         }
