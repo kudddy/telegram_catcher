@@ -23,7 +23,7 @@ pipeline {
 
                 script {
                     echo 'logging in docker'
-                    sh "docker login -u kudddy -p Zs0996755 http://ourhost:5100"
+                    sh "docker login -u kudddy -p Zs0996755"
                     echo 'build image'
                     def customImage = docker.build("kudddy/catcher")
                     echo 'push image'
