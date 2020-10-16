@@ -14,13 +14,3 @@ COPY . /app
 WORKDIR /app
 RUN pip3 install -r requirements.txt
 CMD python3 app.py
-
-withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: params.JP_DockerMechIdCredential, usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD']]) {
-			usr = USERNAME
-			pswd = PASSWORD
-		}
-		docker.withRegistry("http://ourhost:5100", params.JP_DockerMechIdCredential) {
-			sh "docker login -u ${usr} -p ${pswd} http://ourhost:5100"
-			def	image = docker.build("com.att.sharedservices/tomee-uslmonitor")
-			image.push 'latest'
-		}
