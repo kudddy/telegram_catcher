@@ -24,7 +24,7 @@ pipeline {
                 script {
                     echo 'logging in docker'
                     withCredentials([
-                        usernamePassword(credentialsId: "dockercreds", usernameVariable: 'USER', passwordVariable: 'PASS')
+                        usernamePassword(credentialsId: "dockerid", usernameVariable: 'USER', passwordVariable: 'PASS')
                     ]){
 
                     sh "docker login -u ${USER} -p ${PASS}"
