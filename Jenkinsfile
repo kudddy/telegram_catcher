@@ -16,6 +16,11 @@
 
 pipeline {
     agent any
+    environment {
+        DISABLE_AUTH = 'true'
+        GOOGLE_PROJECT_ID = 'velvety-harbor-284611'
+        GOOGLE_SERVICE_ACCOUNT_KEY = credentials('service_account_key');
+    }
     stages {
         stage('Build image') {
             steps {
@@ -30,6 +35,15 @@ pipeline {
                     sh "docker login -u ${USER} -p ${PASS}"
                     }
                     echo 'OK'
+
+                    echo 'log in gcloud'
+                    sh "sudo -s;
+                    gcloud auth activate-service-account --key-file ${GOOGLE_SERVICE_ACCOUNT_KEY};
+                    echo "After authentication gcloud";
+                    gcloud config list;
+                    "
+                    echo 'log OK'
+
                 }
             }
         }
