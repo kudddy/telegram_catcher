@@ -43,7 +43,7 @@ pipeline {
                     tar -xvf /tmp/google-cloud-sdk.tar.gz -C /tmp/;
                     /tmp/google-cloud-sdk/install.sh -q;
                     sudo -s;
-                    source /tmp/google-cloud-sdk/path.bash.inc;
+                    . /tmp/google-cloud-sdk/path.bash.inc;
                     gcloud config set project ${GOOGLE_PROJECT_ID};
                     gcloud auth activate-service-account --key-file ${GOOGLE_SERVICE_ACCOUNT_KEY};
                     echo "After authentication gcloud";
