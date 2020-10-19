@@ -37,7 +37,7 @@ pipeline {
                     }
                     echo 'OK'
 
-                    def customImage = docker.build("gcr.io/${PROJECT_ID}/${APP_NAME}")
+                    def customImage = docker.build("gcr.io/${GOOGLE_PROJECT_ID}/${GOOGLE_APP_NAME}")
 
                     customImage.push()
 
