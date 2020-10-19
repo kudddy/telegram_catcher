@@ -38,7 +38,8 @@ pipeline {
 
                     echo 'log in gcloud'
                     sh """
-                    #!/bin/bash;
+                    #!/bin/sh;
+
                     curl -o /tmp/google-cloud-sdk.tar.gz https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-220.0.0-linux-x86_64.tar.gz;
                     tar -xvf /tmp/google-cloud-sdk.tar.gz -C /tmp/;
                     /tmp/google-cloud-sdk/install.sh -q;
