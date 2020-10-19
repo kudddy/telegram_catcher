@@ -38,8 +38,8 @@ pipeline {
 
                     echo 'log in gcloud'
                     sh """
-                    sudo -s;
-                    bash gcloud config set project ${GOOGLE_PROJECT_ID};
+                    su-root;
+                    gcloud config set project ${GOOGLE_PROJECT_ID};
                     gcloud auth activate-service-account --key-file ${GOOGLE_SERVICE_ACCOUNT_KEY};
                     echo "After authentication gcloud";
                     gcloud config list;
