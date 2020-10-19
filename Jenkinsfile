@@ -20,6 +20,7 @@ pipeline {
         DISABLE_AUTH = 'true'
         GOOGLE_PROJECT_ID = 'velvety-harbor-284611'
         GOOGLE_SERVICE_ACCOUNT_KEY = credentials('service_account_key');
+        GOOGLE_APP_NAME = 'test'
     }
     stages {
         stage('Build image') {
@@ -36,12 +37,21 @@ pipeline {
                     }
                     echo 'OK'
 
+                    def customImage = docker.build("gcr.io/${PROJECT_ID}/${APP_NAME}")
+
+                    customImage.push()
+
+
+
+
+
+
                     echo 'log in gcloud'
                     sh """
                     /gcloud/google-cloud-sdk/bin/gcloud config set project ${GOOGLE_PROJECT_ID};
                     /gcloud/google-cloud-sdk/bin/gcloud auth activate-service-account --key-file ${GOOGLE_SERVICE_ACCOUNT_KEY};
                     echo "After authentication gcloud";
-                    /gcloud/google-cloud-sdk/bin/gcloud config list;
+                    /gcloud/google-cloud-sdk/bin/gcloud app deploy --image-url gcr.io/${PROJECT_ID}/${APP_NAME}
                     """
                     echo 'log OK'
 
