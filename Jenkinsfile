@@ -37,11 +37,12 @@ pipeline {
                     echo 'OK'
 
                     echo 'log in gcloud'
-                    sh "sudo -s;
+                    sh """
+                    sudo -s;
                     gcloud auth activate-service-account --key-file ${GOOGLE_SERVICE_ACCOUNT_KEY};
                     echo "After authentication gcloud";
                     gcloud config list;
-                    "
+                    """
                     echo 'log OK'
 
                 }
