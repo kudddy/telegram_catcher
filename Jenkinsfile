@@ -51,7 +51,7 @@ pipeline {
                     /gcloud/google-cloud-sdk/bin/gcloud config set project ${GOOGLE_PROJECT_ID};
                     /gcloud/google-cloud-sdk/bin/gcloud auth activate-service-account --key-file ${GOOGLE_SERVICE_ACCOUNT_KEY};
                     echo "After authentication gcloud";
-                    /gcloud/google-cloud-sdk/bin/gcloud app deploy --image-url gcr.io/${PROJECT_ID}/${APP_NAME}
+                    /gcloud/google-cloud-sdk/bin/gcloud app deploy --image-url gcr.io/${PROJECT_ID}/${GOOGLE_APP_NAME}
                     """
                     echo 'log OK'
 
