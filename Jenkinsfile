@@ -19,7 +19,7 @@ pipeline {
     environment {
         DISABLE_AUTH = 'true'
         GOOGLE_PROJECT_ID = 'velvety-harbor-284611'
-        GOOGLE_SERVICE_ACCOUNT_KEY = credentials('service_account_key');
+        GOOGLE_SERVICE_ACCOUNT_KEY = credentials('service_acc');
         GOOGLE_APP_NAME = 'test'
     }
     stages {
