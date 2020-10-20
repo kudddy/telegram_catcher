@@ -33,7 +33,7 @@ pipeline {
                         usernamePassword(credentialsId: "dockerid", usernameVariable: 'USER', passwordVariable: 'PASS')
                     ]){
 
-                    sh "docker login -u ${USER} -p ${PASS}"
+                    
                     }
                     echo 'OK'
 
