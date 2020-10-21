@@ -46,8 +46,8 @@ pipeline {
 
                     echo 'log in gcloud'
                     sh """
-                    /gcloud/google-cloud-sdk/bin/gcloud config set project ${GOOGLE_PROJECT_ID};
                     /gcloud/google-cloud-sdk/bin/gcloud auth activate-service-account --key-file ${GOOGLE_SERVICE_ACCOUNT_KEY};
+                    /gcloud/google-cloud-sdk/bin/gcloud config set project ${GOOGLE_PROJECT_ID};
                     /gcloud/google-cloud-sdk/bin/gcloud components install docker-credential-gcr;
                     echo "After authentication gcloud";
                     export PATH=/gcloud/google-cloud-sdk/bin/:$PATH;
