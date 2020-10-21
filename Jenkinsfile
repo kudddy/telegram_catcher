@@ -50,6 +50,7 @@ pipeline {
                     /gcloud/google-cloud-sdk/bin/gcloud auth activate-service-account --key-file ${GOOGLE_SERVICE_ACCOUNT_KEY};
                     /gcloud/google-cloud-sdk/bin/gcloud components install docker-credential-gcr;
                     echo "After authentication gcloud";
+                    export PATH=/gcloud/google-cloud-sdk/bin/docker-credential-gcr:$PATH;
                     /gcloud/google-cloud-sdk/bin/docker-credential-gcr configure-docker
                     """
                     def customImage = docker.build("gcr.io/${GOOGLE_PROJECT_ID}/${GOOGLE_APP_NAME}")
