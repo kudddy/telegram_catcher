@@ -52,7 +52,7 @@ pipeline {
                     echo "After authentication gcloud";
                     export PATH=/gcloud/google-cloud-sdk/bin/:$PATH;
                     /gcloud/google-cloud-sdk/bin/gcloud auth configure-docker
-                    cat GOOGLE_SERVICE_ACCOUNT_KEY | docker login https://gcr.io -u _json_key --password-stdin
+                    cat ${GOOGLE_SERVICE_ACCOUNT_KEY} | docker login https://gcr.io -u _json_key --password-stdin
                     """
                     def customImage = docker.build("gcr.io/${GOOGLE_PROJECT_ID}/${GOOGLE_APP_NAME}")
 
